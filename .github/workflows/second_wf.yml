@@ -1,0 +1,22 @@
+name: Event Details Output
+
+on:
+  issues:
+    types:
+      - opened
+      - closed
+      - reopened
+
+jobs:
+  output-event-details:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print Event Details
+      run: |
+        echo "Event: ${{ github.event_name }}"
+        echo "Action: ${{ github.event.action }}"
+        echo "Issue Number: ${{ github.event.issue.number }}"
+        echo "Issue Title: ${{ github.event.issue.title }}"
+        echo "Issue State: ${{ github.event.issue.state }}"
+        echo "User: ${{ github.event.sender.login }}"
